@@ -24,14 +24,18 @@ public class ProviderActivity extends AppCompatActivity {
         values.put("_id", 6);
         values.put("name", "程序设计的艺术");
         getContentResolver().insert(bookUri, values);
-        Cursor bookCursor = getContentResolver().query(bookUri, new String[]{"_id", "name"}, null, null, null);
-        while (bookCursor.moveToNext()) {
-            Book book = new Book();
-            book.bookId = bookCursor.getInt(0);
-            book.bookName = bookCursor.getString(1);
-            Log.d(TAG, "query book:" + book.toString());
-        }
-        bookCursor.close();
+        Log.d(TAG, "query book after insert");
+        queryBook(bookUri);
+
+        ContentValues updateValues = new ContentValues();
+        updateValues.put("name", "Android开发艺术探索");
+        getContentResolver().update(bookUri, updateValues, "name=?", new String[]{"程序设计的艺术"});
+        Log.d(TAG, "query book after update");
+        queryBook(bookUri);
+
+        getContentResolver().delete(bookUri, "name=?", new String[]{"Android开发艺术探索"});
+        Log.d(TAG, "query book after delete");
+        queryBook(bookUri);
 
         Uri userUri = Uri.parse("content://com.archer.androidart.notes.book.provider/user");
         Cursor userCursor = getContentResolver().query(userUri, new String[]{"_id", "name", "sex"}, null, null, null);
@@ -43,5 +47,16 @@ public class ProviderActivity extends AppCompatActivity {
             Log.d(TAG, "query user:" + user.toString());
         }
         userCursor.close();
+    }
+
+    private void queryBook(Uri bookUri) {
+        Cursor bookCursor = getContentResolver().query(bookUri, new String[]{"_id", "name"}, null, null, null);
+        while (bookCursor.moveToNext()) {
+            Book book = new Book();
+            book.bookId = bookCursor.getInt(0);
+            book.bookName = bookCursor.getString(1);
+            Log.d(TAG, "query book:" + book.toString());
+        }
+        bookCursor.close();
     }
 }
