@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.archer.androidart.notes.chapter02.aidl.BookManagerActivity;
+import com.archer.androidart.notes.chapter02.provider.ProviderActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, BookManagerActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        Button goToProviderActivityBtn = (Button) findViewById(R.id.id_goToProviderActivity);
+        goToProviderActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ProviderActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

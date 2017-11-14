@@ -5,8 +5,12 @@
     <permission
         android:name="com.archer.chapter02.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal"/>
+    <permission
+        android:name="com.archer.PROVIDER"
+        android:protectionLevel="normal"/>
 
     <uses-permission android:name="com.archer.chapter02.permission.ACCESS_BOOK_SERVICE"/>
+    <uses-permission android:name="com.archer.PROVIDER"/>
 
     <application
         android:allowBackup="true"
@@ -29,6 +33,16 @@
         </service>
 
         <activity android:name=".chapter02.aidl.BookManagerActivity">
+        </activity>
+
+        <provider
+            android:name=".chapter02.provider.BookProvider"
+            android:authorities="com.archer.androidart.notes.book.provider"
+            android:permission="com.archer.PROVIDER"
+            android:process=":provider">
+        </provider>
+
+        <activity android:name=".chapter02.provider.ProviderActivity">
         </activity>
     </application>
 
