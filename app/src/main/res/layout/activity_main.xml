@@ -7,6 +7,11 @@
     android:padding="8dp">
 
     <Button
+        android:id="@+id/id_goToMessengerActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go to MessengerActivity"/>
+    <Button
         android:id="@+id/id_goToBookManagerActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,5 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="go to ProviderActivity"/>
+    <Button
+        android:id="@+id/id_goToTCPClientActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go to TCPClientActivity"/>
+    <Button
+        android:id="@+id/id_goToBinderPoolActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go to BinderPoolActivity"/>
 
 </LinearLayout>

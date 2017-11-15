@@ -11,6 +11,8 @@
 
     <uses-permission android:name="com.archer.chapter02.permission.ACCESS_BOOK_SERVICE"/>
     <uses-permission android:name="com.archer.PROVIDER"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -26,14 +28,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".chapter02.messenger.MessengerActivity">
+        </activity>
+
+        <service
+            android:name=".chapter02.messenger.MessengerService"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.archer.androidart.notes.messenger.service"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".chapter02.aidl.BookManagerActivity">
+        </activity>
 
         <service
             android:name=".chapter02.aidl.BookManagerService"
             android:process=":remote">
         </service>
-
-        <activity android:name=".chapter02.aidl.BookManagerActivity">
-        </activity>
 
         <provider
             android:name=".chapter02.provider.BookProvider"
@@ -43,6 +55,20 @@
         </provider>
 
         <activity android:name=".chapter02.provider.ProviderActivity">
+        </activity>
+        <activity android:name=".chapter02.socket.TCPClientActivity">
+        </activity>
+
+        <service
+            android:name=".chapter02.socket.TCPServerService"
+            android:process=":remote">
+        </service>
+        <service
+            android:name=".chapter02.binderpool.BinderPoolService"
+            android:process=":remote">
+        </service>
+
+        <activity android:name=".chapter02.binderpool.BinderPoolActivity">
         </activity>
     </application>
 
